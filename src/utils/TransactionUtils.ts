@@ -231,6 +231,7 @@ export class TransactionUtils {
         // const safeAddress = '0x9D1E7371852a9baF631Ea115b9815deb97cC3205'.toLowerCase()
         // const delegateAddress = '0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0'
 
+
         const ethAdapter = await this.getEthAdapter();
         const delegatorAddress = await ethAdapter.getSigner()!.getAddress()
         const delegateConfig: AddSafeDelegateProps = {
