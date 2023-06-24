@@ -1,5 +1,5 @@
 import { ethers } from 'ethers'
-import SafeApiKit from '@safe-global/api-kit'
+import SafeApiKit, { AddSafeDelegateProps } from '@safe-global/api-kit'
 import Safe, { EthersAdapter, SafeFactory, SafeAccountConfig } from '@safe-global/protocol-kit'
 import { MetaTransactionData, OperationType, MetaTransactionOptions, RelayTransaction } from '@safe-global/safe-core-sdk-types'
 import { GelatoRelayAdapter } from '@safe-global/relay-kit'
@@ -225,5 +225,28 @@ export class TransactionUtils {
         console.log(`Transaction confirmed to the Safe Service: 
         ${txServiceUrl}/api/v1/multisig-transactions/${safeTxHash}`)
         return receipt
+    }
+
+    static addDelegate = async (safeAddress: string, delegateAddress: string, delegateLabel: string) => {
+        // const safeAddress = '0x9D1E7371852a9baF631Ea115b9815deb97cC3205'.toLowerCase()
+        // const delegateAddress = '0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0'
+
+        const ethAdapter = await this.getEthAdapter();
+        const delegatorAddress = await ethAdapter.getSigner()!.getAddress()
+        const delegateConfig: AddSafeDelegateProps = {
+          safeAddress,
+          delegateAddress,
+          delegatorAddress,
+          signer: ethAdapter.getSigner()!,
+          label: delegateLabel
+        }
+
+        const chainId = await ethAdapter.getChainId();
+        const txServiceUrl = CHAIN_INFO[chainId.toString()].transactionServiceUrl;
+        
+        const safeService = new SafeApiKit({ txServiceUrl, ethAdapter })
+
+        const response = await safeService.addSafeDelegate(delegateConfig);
+        return response
     }
 }

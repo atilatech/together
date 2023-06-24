@@ -12,6 +12,9 @@ function WalletCreate() {
   // usestate for safe address
   const [safeAddress, setSafeAddress] = useState(localStorage.getItem('safeAddress')||'');
   const [account, setAccount] = useState<SafeAuthKit<Web3AuthAdapter>>()
+
+  const [delegateAddress, setDelegateAddress] = useState('');
+  const [delegateLabel, setDelegateLabel] = useState('');
   
 
   const addInput = () => {
@@ -46,6 +49,12 @@ function WalletCreate() {
 
     console.log(safe);
   };
+
+  const addDelegate = async (event: React.MouseEvent<HTMLButtonElement>) => {
+
+    const safeDelegateResponse = await TransactionUtils.addDelegate(safeAddress, delegateAddress, delegateLabel);
+    console.log(safeDelegateResponse);
+  }
 
   return (
     <div>
@@ -118,6 +127,35 @@ function WalletCreate() {
         >
           Save Safe Address to Local Storage
         </button>
+
+        <h3>
+          Add a Delegate
+        </h3>
+
+      <input
+              type="text"
+              className="form-control"
+              placeholder={`Delegate Address`}
+              value={delegateAddress}
+              onChange={(e) => setDelegateAddress(e.target.value)}
+            />
+        
+      <input
+              type="text"
+              className="form-control"
+              placeholder={`Delegate Label`}
+              value={delegateLabel}
+              onChange={(e) => setDelegateLabel(e.target.value)}
+            />
+        <button
+          type="button"
+          className="btn btn-outline-primary my-2"
+          onClick={addDelegate}
+        >
+          Add Delegate
+        </button>
+
+
     </div>
     <WalletManage authKit={account} />
     </div>
