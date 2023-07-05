@@ -65,7 +65,12 @@ Note: Compile step may not be necessary if you already run `test`
 1. Add it to `.env`
 1. Edit `server/nfts.json`
 
+
 ```bash
 source .env
 node server/CreateNFT.js 'server/nfts.json'
 ```
+
+### NFT Metadata Samples
+
+1. [Afropolitan NFTs](https://docs.moralis.io/web3-data-api/evm/reference/get-multiple-nfts?tokens=[{%22token_address%22:%220xe652f7ef26d4ed34de2d83d4eebf291bd60ed2af%22,%22token_id%22:%220%22}]&normalizeMetadata=true&media_items=true&chain=eth)

@@ -16,23 +16,11 @@ export interface Product {
 
 export const SAMPLE_EVENTS : ProductCollection[] = [
     {
-      title: 'Taylor Swift | The Eras Tour - Austin - March 15, 2023',
-      image: 'https://i.scdn.co/image/ab6761610000e5eb5a00969a4698c3132a15fbb0',
-      description: 'FRI, MAR 17, 2023 STATE FARM STADIUM Glendale, AZ with Paramore & GAYLE https://www.taylorswift.com/events/',
-    },
-    {
-      title: 'Burnaboy Love Damini Concert - London, UK - January 25, 2023',
-      image: 'https://i.scdn.co/image/ab6761610000e5eba0e4780f120345edddeaada9',
-      description: '03JUNLONDON STADIUM, QUEEN ELIZABETHLONDON, UK https://www.onaspaceship.com/tour',
-    },
-    {
-      title: 'Blue Mountain Skiing Day Pass - January 20, 2023',
-      image: 'https://southgeorgianbay.ca/wp-content/uploads/2022/02/night-skiing.jpg',
-      description: 'Adult Day Lift Ticket. See: https://book.bluemountain.ca/ecomm/shop/calendar/3603699/en-us?productcategoryid=117',
-    },
-    {
-      title: 'Blue Mountain Skiing Day Pass - January 21, 2023',
-      image: 'https://southgeorgianbay.ca/wp-content/uploads/2022/02/night-skiing.jpg',
-      description: 'Adult Day Lift Ticket. See: https://book.bluemountain.ca/ecomm/shop/calendar/3603699/en-us?productcategoryid=117',
+      title: 'Afropolitan Citizen 0',
+      image: 'https://i.seadn.io/gcs/files/c4c0b155360e7fd91a67dea1cfebeaf9.png?auto=format&dpr=1&w=1000',
+      description: 'Afropolitan NFT Citizen 0: https://opensea.io/assets/ethereum/0xe652f7ef26d4ed34de2d83d4eebf291bd60ed2af/1',
+      address: '0x01431e11c0dea3a643a5ad73a605aa54ca4c085e',
+      chainId: '5',
+      tokenId: '1'
     },
   ].map(value => ({...value, slug: TextUtils.slugify(value.title)}));

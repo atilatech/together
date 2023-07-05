@@ -1,27 +1,78 @@
 [
     {
         "nft": {
-            "name": "Burnaboy Love Damini Concert - London, UK - January 25, 2023",
-            "image": "https://i.scdn.co/image/ab6761610000e5eba0e4780f120345edddeaada9",
-            "description": "03JUNLONDON STADIUM, QUEEN ELIZABETHLONDON, UK https://www.onaspaceship.com/tour",
+            "name": "Afropolitan Citizen 0",
+            "image": "https://i.seadn.io/gcs/files/9077b58fa147ca1a5607ddf2bc53357c.jpg",
+            "description": "Afropolitan NFT: https://opensea.io/assets/ethereum/0xe652f7ef26d4ed34de2d83d4eebf291bd60ed2af",
             "attributes": [
                 {
-                    "display_type": "date", 
-                    "trait_type": "Event Date", 
-                    "value": 1673871493
+                  "trait_type": "Background",
+                  "value": "Star Burst",
+                  "display_type": null,
+                  "max_value": null,
+                  "trait_count": 0,
+                  "order": null
                 },
                 {
-                    "trait_type": "Seat", 
-                    "value": "Row 7, Seat 4"
+                  "trait_type": "Clothing",
+                  "value": "Shoulder Knot",
+                  "display_type": null,
+                  "max_value": null,
+                  "trait_count": 0,
+                  "order": null
                 },
                 {
-                    "trait_type": "Location", 
-                    "value": "Queen Elizabeth Olympic Park, London, UK"
+                  "trait_type": "Mouth",
+                  "value": "Full",
+                  "display_type": null,
+                  "max_value": null,
+                  "trait_count": 0,
+                  "order": null
+                },
+                {
+                  "trait_type": "Ear",
+                  "value": "None",
+                  "display_type": null,
+                  "max_value": null,
+                  "trait_count": 0,
+                  "order": null
+                },
+                {
+                  "trait_type": "Eyes",
+                  "value": "Starry Blue",
+                  "display_type": null,
+                  "max_value": null,
+                  "trait_count": 0,
+                  "order": null
+                },
+                {
+                  "trait_type": "Facepaint",
+                  "value": "Constellation Freckles",
+                  "display_type": null,
+                  "max_value": null,
+                  "trait_count": 0,
+                  "order": null
+                },
+                {
+                  "trait_type": "Hair",
+                  "value": "Albaso Braids",
+                  "display_type": null,
+                  "max_value": null,
+                  "trait_count": 0,
+                  "order": null
+                },
+                {
+                  "trait_type": "Skin",
+                  "value": "Toffee",
+                  "display_type": null,
+                  "max_value": null,
+                  "trait_count": 0,
+                  "order": null
                 }
-            ],
+              ],
             "chainId": "5",
             "owner": "0x6Dbd26Bca846BDa60A90890cfeF8fB47E7d0f22c",
-            "address": "0x85942528541a1d7db9e9d84a074d0b2204c94b5a"
+            "address": "0x01431e11c0dea3a643a5ad73a605aa54ca4c085e"
         }
     }
 ]
