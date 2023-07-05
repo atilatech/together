@@ -16,7 +16,7 @@ contract NFT is ERC721URIStorage {
         uint256 indexed tokenId,
         string tokenURI
     );
-    constructor() ERC721("Safe Space NFT", "SAFENFT") {}
+    constructor() ERC721("Together NFT", "TOGETHERNFT") {}
 
     function createToken(string memory tokenURI) public returns (uint) {
         return _createToken(tokenURI, msg.sender);

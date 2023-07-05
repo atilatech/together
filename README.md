@@ -4,13 +4,13 @@ A marketplace for buying and selling things together with friends.
 
 ![safe-space-demo-0 0 2](https://user-images.githubusercontent.com/9806858/216753361-7f4dab8a-5df7-4fcb-a671-5ca6e209eb24.gif)
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/5afe/safe-space)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/atilatech/together)
 
 ## Quickstart
 
 
 ```
-git clone https://github.com/5afe/safe-space
+git clone https://github.com/atilatech/together
 cd safe-space
 # git checkout <version> #optional if you want to use a specific version e.g. git checkout 0.4.0
 yarn install
@@ -27,7 +27,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 cp example.env .env
 touch .privatekey
 # put environment variables in .env and .privatekey
-source.env
+source .env
 npx hardhat deploy --chain-id 5
 ```
 
@@ -46,6 +46,13 @@ npx hardhat deploy --chain-id 5
 1. `npx hardhat verify --network goerli [smart_contract_address_you_just deployed]`
     1. Example: `npx hardhat verify --network goerli 0x85942528541a1d7db9e9d84a074d0b2204c94b5a`
     1. To see a list of other networks: `npx hardhat verify --list-networks`
+
+### Updating Contracts
+`npx hardhat test`
+
+`npx hardhat compile`
+
+Note: Compile step may not be necessary if you already run `test`
 
 ## Contracts
 1. NFT Marketplace: https://goerli.etherscan.io/address/0xa0a3c753387050d1949d6b8db672fff724b635c1#code
