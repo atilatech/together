@@ -8,7 +8,7 @@ function Header() {
       <div className="container">
         <p className="float-start mb-1">
           <Link to="/">
-            Safe Space
+            Together
           </Link>
         </p>
         <p className="float-end mb-1">

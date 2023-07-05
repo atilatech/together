@@ -1,6 +1,6 @@
-# Safe Space
+# Together
 
-A marketplace for buying and selling things with Safe accounts.
+A marketplace for buying and selling things together with friends.
 
 ![safe-space-demo-0 0 2](https://user-images.githubusercontent.com/9806858/216753361-7f4dab8a-5df7-4fcb-a671-5ca6e209eb24.gif)
 
