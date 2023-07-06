@@ -1,8 +1,9 @@
 let { title, description, image, address, tokenId } = props;
 State.init({
-  showLogin: true,
+  showLogin: false,
   destination: props.destination,
-  transactionHash: null,
+  transaction: null,
+  loading: false,
   error: null,
 });
 
@@ -16,7 +17,7 @@ const transferNFT = () => {
   const sender = Ethers.send("eth_requestAccounts")[0];
   console.log("sender", sender);
   if (!sender) {
-    State.update({ error: "Please login first" });
+    State.update({ error: "Please login first", showLogin: true });
     return;
     console.log("Please login first");
     // window.ethereum.send("eth_requestAccounts");
@@ -36,20 +37,28 @@ const transferNFT = () => {
     signer.getAddress(),
     state.destination,
     Number.parseInt(tokenId)
-  ).then((transactionHash) => {
-    console.log("NFT transferred successfully!");
+  ).then((transaction) => {
 
-    console.log("Transaction Hash:", transactionHash);
-    State.update({ transactionHash: transactionHash });
-    console.log(
-      "Transaction URL:",
-      `https://goerli.etherscan.io/tx/${transactionHash}`
-    );
+    console.log("Transaction Hash:", transaction);
+    State.update({ loading: true });
+    transaction.wait().then(() => {
+
+        console.log("NFT transferred successfully!");
+        State.update({ transaction: transaction, loading: false });
+        console.log(
+          "Transaction URL:",
+          `https://goerli.etherscan.io/tx/${transaction.hash}`
+        );
+
+    });
+  }).catch((error) => {
+    console.log("error", error);
+    State.update({ error: error.reason || "Error occured in transaction" });
   });
 };
 
 const transferButton = (
-  <button className="btn btn-primary m-3" onClick={() => transferNFT()}>
+  <button className="btn btn-primary m-3" onClick={() => transferNFT()} disabled={state.loading}>
     Transfer NFT
   </button>
 );
@@ -95,16 +104,34 @@ return (
               </a>
             </p>
           )}
-          {transactionHash && (
+
+        {state.loading && (
+            <>
+            <p className="text-primary">
+              Loading transaction...
+            </p>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style={{width: "100%"}}></div>
+            </div>
+            </>
+          )}
+          {state.transaction && (
             <p className="text-success">
               Transfer was succesful!
-              <a href={`https://goerli.etherscan.io/tx/${transactionHash}`}>
+              <a href={`https://goerli.etherscan.io/tx/${state.transaction.hash}`}
+              target="_blank" rel="noreferrer">
                 View Transaction
               </a>
             </p>
           )}
+
+            {state.error && (
+            <p className="text-danger">
+              {state.error}
+            </p>
+          )}
           <hr />
-          {showLogin && loginButton}
+          {state.showLogin && loginButton}
         </div>
       </div>
     </div>
