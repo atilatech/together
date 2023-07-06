@@ -5,6 +5,9 @@ export interface ProductCollection {
     slug: string,
     image: string,
     description: string,
+    address: string,
+    chainId: string,
+    tokenId: string,
     products?: Product[]
 }
 
