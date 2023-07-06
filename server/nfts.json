@@ -1,13 +1,13 @@
 [
     {
         "nft": {
-            "name": "Afropolitan Citizen 0",
-            "image": "https://i.seadn.io/gcs/files/9077b58fa147ca1a5607ddf2bc53357c.jpg",
+            "name": "Afropolitan Citizen 1",
+            "image": "https://i.seadn.io/gcs/files/d00e83dd227019bbc905576894e437dc.jpg",
             "description": "Afropolitan NFT: https://opensea.io/assets/ethereum/0xe652f7ef26d4ed34de2d83d4eebf291bd60ed2af",
             "attributes": [
                 {
                   "trait_type": "Background",
-                  "value": "Star Burst",
+                  "value": "Yellow",
                   "display_type": null,
                   "max_value": null,
                   "trait_count": 0,
@@ -39,7 +39,7 @@
                 },
                 {
                   "trait_type": "Eyes",
-                  "value": "Starry Blue",
+                  "value": "Intense",
                   "display_type": null,
                   "max_value": null,
                   "trait_count": 0,
@@ -47,7 +47,7 @@
                 },
                 {
                   "trait_type": "Facepaint",
-                  "value": "Constellation Freckles",
+                  "value": "None",
                   "display_type": null,
                   "max_value": null,
                   "trait_count": 0,
@@ -55,7 +55,7 @@
                 },
                 {
                   "trait_type": "Hair",
-                  "value": "Albaso Braids",
+                  "value": "Packed Knot Bun",
                   "display_type": null,
                   "max_value": null,
                   "trait_count": 0,
@@ -63,7 +63,7 @@
                 },
                 {
                   "trait_type": "Skin",
-                  "value": "Toffee",
+                  "value": "Golden",
                   "display_type": null,
                   "max_value": null,
                   "trait_count": 0,
