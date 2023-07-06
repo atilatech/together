@@ -3,6 +3,7 @@ const { expect } = require("chai");
 const { ethers } = require("hardhat");
 const { BigNumber } = ethers;
 
+
 const DEFAULT_URI = "https://www.mytokenlocation.com";
 describe("NFT", function() {
 
