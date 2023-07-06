@@ -1,4 +1,4 @@
-let { title, description, image, address, tokenId } = props;
+let { address, tokenId } = props;
 State.init({
   showLogin: false,
   destination: props.destination,
@@ -80,13 +80,11 @@ const loginButton = (
 
 return (
   <div className="EventDetail container card shadow my-5 p-5">
-    <h1 className="text-center mb-3">{title} abc</h1>
+    <h3 className="text-center mb-3">Transfer NFT</h3>
     <div className="container">
       <div className="card shadow-sm">
-        <img src={image} width={300} alt={title} />
 
         <div className="card-body">
-          <p className="card-text">{description}</p>
 
           <input
             type="text"
@@ -96,14 +94,6 @@ return (
             className="form-control mb-3"
           />
           {transferButton}
-          {transactionHash && (
-            <p className="text-success">
-              Transfer was succesful!
-              <a href={`https://goerli.etherscan.io/tx/${transactionHash}`}>
-                View Transaction
-              </a>
-            </p>
-          )}
 
         {state.loading && (
             <>

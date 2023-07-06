@@ -74,3 +74,5 @@ node server/CreateNFT.js 'server/nfts.json'
 ### NFT Metadata Samples
 
 1. [Afropolitan NFTs](https://docs.moralis.io/web3-data-api/evm/reference/get-multiple-nfts?tokens=[{%22token_address%22:%220xe652f7ef26d4ed34de2d83d4eebf291bd60ed2af%22,%22token_id%22:%220%22}]&normalizeMetadata=true&media_items=true&chain=eth)
+
+2. [Near BOS Sample Endpoint](https://near.org/tomiwa1a1.near/widget/AfroShare?alchemyApiKey=uB5QD-LyGRGbOa5--7aWs-dyqxjb3z24&address=0x01431e11c0dea3a643a5ad73a605aa54ca4c085e&tokenId=1)
