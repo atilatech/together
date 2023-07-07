@@ -1,6 +1,6 @@
 # AfroShare: Easily Share Your Afropolitan NFTs with Others
 
-AfroShare is a decentralized application (dApp) that allows users to share their Afropolitan Non-Fungible Tokens (NFTs) with others.
+[Near BOS Sample Endpoint](https://near.org/tomiwa1a1.near/widget/AfroShare?alchemyApiKey=uB5QD-LyGRGbOa5--7aWs-dyqxjb3z24&address=0x8842da19ef17d1a10875e0ebddb6981e178b90d2&tokenId=1) is a decentralized application (dApp) that allows users to share their Afropolitan Non-Fungible Tokens (NFTs) with others.
 
 Imagine a situation where you hold an Afropolitan NFT, but you can't attend a token-gated event. However, you know someone who would love to attend but does not hold an Afropolitan NFT. AfroShare comes to the rescue!
 
