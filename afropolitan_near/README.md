@@ -7,6 +7,7 @@ Consider a token-gated event that requires an Afropolitan NFT. You hold an Afrop
 <img width="593" alt="Screen Shot 2023-07-07 at 10 31 50 AM" src="https://github.com/atilatech/together/assets/9806858/7876e4d5-2ba0-48ff-a594-e7ace05b533a">
 
 
+Video Demo: https://www.loom.com/share/d82aa8cd86154ec6b94f22229261cb91
 ## Features
 AfroShare allows you to:
 - Rent out your NFT to another user
