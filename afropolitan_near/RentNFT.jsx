@@ -3,7 +3,6 @@ let { address, tokenId } = props;
 let currentTime = new Date().getTime() / 1000;
 
 State.init({
-  showLogin: false,
   destination: props.destination,
   expires: currentTime,
   transaction: null,
@@ -18,22 +17,13 @@ const rentNFT = () => {
 
   console.log("nftABI", nftABI);
 
-  const sender = Ethers.send("eth_requestAccounts")[0];
-  console.log("sender", sender);
-  if (!sender) {
-    State.update({ error: "Please login first", showLogin: true });
-    return;
-  } else {
-    State.update({ error: "" });
-  }
-
   const signer = Ethers.provider().getSigner();
 
   const contractAbi = JSON.parse(nftABI.body);
-  console.log("sender, signer, contractAbi", { sender, signer, contractAbi });
+  console.log("signer, contractAbi", { signer, contractAbi });
   const nftContract = new ethers.Contract(address, contractAbi.abi, signer);
   console.log({ nftContract });
-
+  console.log("state.destination", state.destination);
   nftContract["setUser(uint256,address,uint64)"](
     Number.parseInt(tokenId),
     state.destination,
@@ -110,17 +100,6 @@ const setDestinationAddress = (value) => {
   State.update({ destination: value });
 };
 
-const loginButton = (
-  <Web3Connect
-    className="FormSubmitContainer"
-    connectLabel={web3connectLabel}
-    onConnect={(provider) => {
-      console.log("provider", provider);
-      State.update({ provider });
-    }}
-  />
-);
-
 return (
   <div className="EventDetail container card shadow my-5 p-5">
     <h3 className="text-center mb-3">Rent NFT</h3>
@@ -165,12 +144,6 @@ return (
             </p>
           )}
           {state.error && <p className="text-danger">{state.error}</p>}
-          {state.showLogin && (
-            <>
-              <hr />
-              {loginButton}
-            </>
-          )}
         </div>
       </div>
     </div>
