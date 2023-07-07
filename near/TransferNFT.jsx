@@ -96,14 +96,6 @@ return (
             className="form-control mb-3"
           />
           {transferButton}
-          {transactionHash && (
-            <p className="text-success">
-              Transfer was succesful!
-              <a href={`https://goerli.etherscan.io/tx/${transactionHash}`}>
-                View Transaction
-              </a>
-            </p>
-          )}
 
           {state.loading && (
             <>
