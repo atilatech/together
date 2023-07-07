@@ -31,7 +31,7 @@ The NFT is stored as a Rentable NFT **ERC-4907 Smart Contract** with:
 View the [Rentable Afropolitan NFT Smart Contract on Etherscan](https://goerli.etherscan.io/address/0x8842da19ef17d1a10875e0ebddb6981e178b90d2#code),  [Opensea](https://testnets.opensea.io/assets/goerli/0x8842da19ef17d1a10875e0ebddb6981e178b90d2/) and [Github](https://github.com/atilatech/together/blob/master/contracts/RentableNFT.sol).
 
 ### 2. Near BOS Components
-AfroShare is deployed on Near BOS, ensuring the dApp's security and reliability. The dApp is composed of three Near BOS components:
+AfroShare is deployed on Near BOS, ensuring the dApp's security and reliability. The dApp is composed of Near BOS components:
 - **[AfroShare](https://near.org/tomiwa1a1.near/widget/AfroShare)**: The main application
 - **[RentNFT](https://near.org/tomiwa1a1.near/widget/RentNFT)**: Handles the rental of NFTs
 - **[TokenGate](https://near.org/tomiwa1a1.near/widget/TokenGate)**: Manages access to token-gated events
