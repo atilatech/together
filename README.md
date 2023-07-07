@@ -35,8 +35,10 @@ npx hardhat deploy --chain-id 5
     1. If you want to deploy just the NFT or the Market without deploying everything run:
         1.  `npx hardhat deploy:nft --chain-id [chainId]`
         1.  `npx hardhat deploy:market --chain-id [chainId]`
+        1.  `npx hardhat deploy:rentableNFT --chain-id [chainId]`
     1. Here are some examples:
         1. Ethereum Goerli: `npx hardhat deploy --chain-id 5`
+        1. Ethereum Goerli: `npx hardhat deploy:rentableNFT --chain-id 5`
 
 ### Verifying Smart Contract on Etherscan
 
@@ -76,3 +78,8 @@ node server/CreateNFT.js 'server/nfts.json'
 1. [Afropolitan NFTs](https://docs.moralis.io/web3-data-api/evm/reference/get-multiple-nfts?tokens=[{%22token_address%22:%220xe652f7ef26d4ed34de2d83d4eebf291bd60ed2af%22,%22token_id%22:%220%22}]&normalizeMetadata=true&media_items=true&chain=eth)
 
 2. [Near BOS Sample Endpoint](https://near.org/tomiwa1a1.near/widget/AfroShare?alchemyApiKey=uB5QD-LyGRGbOa5--7aWs-dyqxjb3z24&address=0x01431e11c0dea3a643a5ad73a605aa54ca4c085e&tokenId=1)
+
+
+1. Normal NFT: https://goerli.etherscan.io/address/0x01431e11c0dea3a643a5ad73a605aa54ca4c085e#events
+
+1. Rentable NFT: https://goerli.etherscan.io/address/0x8842da19ef17d1a10875e0ebddb6981e178b90d2#events
