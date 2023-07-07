@@ -15,7 +15,11 @@ const loadNFT = () => {
     options
   );
   console.log("nft", nfts);
-
+  if (nfts.status === 403) {
+    State.update({ error: "Please add an Alchemy API key" });
+  } else {
+    State.update({ error: "" });
+  }
   State.update({ token: nfts.body.nfts[0] });
   console.log("state.token", state.token);
   State.update({ loading: false });
@@ -65,6 +69,9 @@ return (
         </div>
       </>
     )}
+    {state.error && <p className="text-danger">{state.error}</p>}
+    <hr />
+    <Widget src="tomiwa1a1.near/widget/RentNFT" props={props} />
     <hr />
     <Widget src="tomiwa1a1.near/widget/TransferNFT" props={props} />
   </div>

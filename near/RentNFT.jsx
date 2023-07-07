@@ -23,9 +23,6 @@ const rentNFT = () => {
   if (!sender) {
     State.update({ error: "Please login first", showLogin: true });
     return;
-    console.log("Please login first");
-    // window.ethereum.send("eth_requestAccounts");
-    console.log(" window.ethereum.send");
   } else {
     State.update({ error: "" });
   }
@@ -37,16 +34,16 @@ const rentNFT = () => {
   const nftContract = new ethers.Contract(address, contractAbi.abi, signer);
   console.log({ nftContract });
 
-  nftContract["safeTransferFrom(address,address,uint256)"](
-    signer.getAddress(),
+  nftContract["setUser(uint256,address,uint64)"](
+    Number.parseInt(tokenId),
     state.destination,
-    Number.parseInt(tokenId)
+    Number.parseInt(state.expires)
   )
     .then((transaction) => {
       console.log("Transaction Hash:", transaction);
       State.update({ loading: true });
       transaction.wait().then(() => {
-        console.log("NFT transferred successfully!");
+        console.log("NFT rented successfully!");
         State.update({ transaction: transaction, loading: false });
         console.log(
           "Transaction URL:",
@@ -66,7 +63,7 @@ const transferButton = (
     onClick={() => rentNFT()}
     disabled={state.loading}
   >
-    Transfer NFT
+    Rent NFT
   </button>
 );
 
@@ -126,7 +123,7 @@ const loginButton = (
 
 return (
   <div className="EventDetail container card shadow my-5 p-5">
-    <h3 className="text-center mb-3">Transfer NFT</h3>
+    <h3 className="text-center mb-3">Rent NFT</h3>
     <div className="container">
       <div className="card shadow-sm">
         <div className="card-body">
@@ -140,14 +137,6 @@ return (
           />
           {expiresSection}
           {transferButton}
-          {transactionHash && (
-            <p className="text-success">
-              Transfer was succesful!
-              <a href={`https://goerli.etherscan.io/tx/${transactionHash}`}>
-                View Transaction
-              </a>
-            </p>
-          )}
           {state.loading && (
             <>
               <p className="text-primary">Loading transaction...</p>
@@ -165,7 +154,7 @@ return (
           )}
           {state.transaction && (
             <p className="text-success">
-              Transfer was succesful!
+              Rental was succesful!
               <a
                 href={`https://goerli.etherscan.io/tx/${state.transaction.hash}`}
                 target="_blank"
@@ -176,8 +165,12 @@ return (
             </p>
           )}
           {state.error && <p className="text-danger">{state.error}</p>}
-          <hr />
-          {state.showLogin && loginButton}
+          {state.showLogin && (
+            <>
+              <hr />
+              {loginButton}
+            </>
+          )}
         </div>
       </div>
     </div>

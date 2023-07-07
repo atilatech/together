@@ -37,28 +37,31 @@ const transferNFT = () => {
     signer.getAddress(),
     state.destination,
     Number.parseInt(tokenId)
-  ).then((transaction) => {
-
-    console.log("Transaction Hash:", transaction);
-    State.update({ loading: true });
-    transaction.wait().then(() => {
-
+  )
+    .then((transaction) => {
+      console.log("Transaction Hash:", transaction);
+      State.update({ loading: true });
+      transaction.wait().then(() => {
         console.log("NFT transferred successfully!");
         State.update({ transaction: transaction, loading: false });
         console.log(
           "Transaction URL:",
           `https://goerli.etherscan.io/tx/${transaction.hash}`
         );
-
+      });
+    })
+    .catch((error) => {
+      console.log("error", error);
+      State.update({ error: error.reason || "Error occured in transaction" });
     });
-  }).catch((error) => {
-    console.log("error", error);
-    State.update({ error: error.reason || "Error occured in transaction" });
-  });
 };
 
 const transferButton = (
-  <button className="btn btn-primary m-3" onClick={() => transferNFT()} disabled={state.loading}>
+  <button
+    className="btn btn-primary m-3"
+    onClick={() => transferNFT()}
+    disabled={state.loading}
+  >
     Transfer NFT
   </button>
 );
@@ -83,9 +86,8 @@ return (
     <h3 className="text-center mb-3">Transfer NFT</h3>
     <div className="container">
       <div className="card shadow-sm">
-
         <div className="card-body">
-
+          <label className="mb-1">Destination Address</label>
           <input
             type="text"
             placeholder="Enter Destination Address"
@@ -94,32 +96,44 @@ return (
             className="form-control mb-3"
           />
           {transferButton}
-
-        {state.loading && (
-            <>
-            <p className="text-primary">
-              Loading transaction...
-            </p>
-            <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style={{width: "100%"}}></div>
-            </div>
-            </>
-          )}
-          {state.transaction && (
+          {transactionHash && (
             <p className="text-success">
               Transfer was succesful!
-              <a href={`https://goerli.etherscan.io/tx/${state.transaction.hash}`}
-              target="_blank" rel="noreferrer">
+              <a href={`https://goerli.etherscan.io/tx/${transactionHash}`}>
                 View Transaction
               </a>
             </p>
           )}
 
-            {state.error && (
-            <p className="text-danger">
-              {state.error}
+          {state.loading && (
+            <>
+              <p className="text-primary">Loading transaction...</p>
+              <div class="progress">
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated"
+                  role="progressbar"
+                  aria-valuenow="100"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style={{ width: "100%" }}
+                ></div>
+              </div>
+            </>
+          )}
+          {state.transaction && (
+            <p className="text-success">
+              Transfer was succesful!
+              <a
+                href={`https://goerli.etherscan.io/tx/${state.transaction.hash}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                View Transaction
+              </a>
             </p>
           )}
+
+          {state.error && <p className="text-danger">{state.error}</p>}
           <hr />
           {state.showLogin && loginButton}
         </div>
