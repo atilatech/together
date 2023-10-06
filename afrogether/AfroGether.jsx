@@ -19,15 +19,20 @@ State.init({
   ],
 });
 
-const handlePurchase = (itemType) => {
-  if (itemType === "item1") {
-    State.update({ [item1.currentUserPurchased]: true });
-  } else if (itemType === "item2") {
-    State.update({ [item2.currentUserPurchased]: true });
-  }
+const handlePurchase = (index) => {
+  const itemsToUpdate = state.items;
+  itemsToUpdate[index].currentUserPurchased = true;
+  itemsToUpdate[index].groupPurchaseCount += 1;
+  State.update({ items: itemsToUpdate });
 };
 
-const renderPurchaseActions = (item) => (
+const handleLeaveOrder = (index) => {
+  const itemsToUpdate = state.items;
+  itemsToUpdate[index].currentUserPurchased = false;
+  State.update({ items: itemsToUpdate });
+};
+
+const renderPurchaseActions = (item, index) => (
   <>
     {item.currentUserPurchased ? (
       <>
@@ -36,7 +41,7 @@ const renderPurchaseActions = (item) => (
           more users to release the tickets?
         </p>
 
-        {item.groupPurchaseCount < item.groupPurchaseThreshold && (
+        {item.groupPurchaseCount < item.groupPurchaseThreshold ? (
           <>
             <p>
               {item.groupPurchaseThreshold - item.groupPurchaseCount} more users
@@ -44,7 +49,7 @@ const renderPurchaseActions = (item) => (
             </p>
             <button
               className="btn btn-danger m-3"
-              onClick={() => handlePurchase("item1")}
+              onClick={() => handleLeaveOrder(index)}
               disabled={
                 item.loading ||
                 item.groupPurchaseCount === item.groupPurchaseThreshold
@@ -53,27 +58,44 @@ const renderPurchaseActions = (item) => (
               Leave Group Order
             </button>
           </>
-        )}
+        ):
+        <>
+            <button
+              className="btn btn-success m-3"
+              onClick={() => handleLeaveOrder(index)}
+              disabled={
+                item.loading}
+            >
+              Release Tickets
+            </button>
+        </>
+        
+        }
       </>
     ) : (
       <>
+      {item.groupPurchaseCount < item.groupPurchaseThreshold && 
+      <>
         <button
           className="btn btn-primary m-3"
-          onClick={() => handlePurchase("item1")}
+          onClick={() => handlePurchase(index)}
           disabled={
-            state.loading ||
-            state.groupPurchaseCount === state.groupPurchaseThreshold
+            item.loading ||
+            item.groupPurchaseCount === item.groupPurchaseThreshold
           }
         >
           Buy together with your friends - ($20)
         </button>
         <button
           className="btn btn-secondary m-3"
-          onClick={() => handlePurchase("item2")}
-          disabled={state.loading}
+          onClick={() => handlePurchase(index)}
+          disabled={item.loading}
         >
           Purchase individually at full price - ($30)
         </button>
+
+      </>
+      }
       </>
     )}
   </>
@@ -105,7 +127,7 @@ return (
                   />
                 )
               )}
-              {renderPurchaseActions(item)}
+              {renderPurchaseActions(item, index)}
             </div>
           </div>
         </>
